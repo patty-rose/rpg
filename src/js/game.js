@@ -1,15 +1,15 @@
-export default class Game {
+export class Game {
   constructor(players) {
     this.players = players;
   }
 
 }
 
-class Player extends Game {
-  constructor() {
+export class Player{
+  constructor(playerType) {
     this.playerType = playerType;
-    this.hp = hp;
-    this.weapon = weapon;
-    this.level = level;
+    this.hp = 100;
+    this.weapon;
+    this.level = 1;
   }
 }
