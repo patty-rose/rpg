@@ -13,3 +13,4 @@ export class Player{
     this.level = 1;
   }
 }
+
