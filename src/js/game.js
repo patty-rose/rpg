@@ -1,5 +1,4 @@
 function equippedWeapon(playerType) {
-  let weaponDamage = 0;
   const weaponMap = {
     "scientist" : ["chemical burn", 5],
     "gymBro" : ["towel whip", 5]
@@ -12,6 +11,16 @@ export class Game {
     this.players = players;
   }
 
+  takeTurn() {
+    let diceRoll = Math.floor((Math.random()*6) + 1);
+    if(diceRoll === 1 || 6) {
+      return "battleMonster"
+    } else if(diceRoll === 2 || 5) {
+      return "tripAndFall"
+    } else if(diceRoll === 3 || 4) {
+      return "findFood"
+    }
+  }
 }
 
 export class Player{
@@ -30,49 +39,3 @@ export class Player{
   }
 
 }
-
-// function equippedWeapon() {
-//   let weaponDamage = 0;
-//   const weaponMap = {
-//     "chemical Burn" : 5,
-//     "towel whip" : 5,
-//   }
-//   return weaponMap;
-// };
-
-// Player.prototype.equip = function(){
-//   this.weapon = 0;
-//   this.weapon = equippedWeapon(this.playerType);
-// }
-
-// // pizza examples below
-
-// const weaponMap = {
-//   playerType: "scientist", weapon : "chemical burn", 5
-// }
-
-
-
-// Player.prototype.equip = function(){
-//   this.weaponDamage = 0;
-//   this.weapon = equippedWeapon(this.playerType)[0];
-//   this.weaponDamage = equippedWeapon(this.playerType)[1];
-// }
-
-
-// function calculateSizeCost(size) {
-//   let sizeCost = 0;
-//   const sizeCostMap = {
-//     "small" : 5,
-//     "medium" : 10,
-//     "large" : 15,
-//     "extra-large" : 20,
-//   }
-//   return sizeCostMap[size];
-// }
-
-// Pizza.prototype.calculatePizzaCost = function(){
-//   this.pizzaCost = 0
-//   this.pizzaCost = calculateSizeCost(this.size) + calculateToppingsCost(this.toppings);
-// };
-

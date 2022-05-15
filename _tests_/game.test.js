@@ -5,6 +5,13 @@ describe('Game', () => {
 const game = new Game(["scientist", "nerd"]);
     expect(game.players).toEqual(["scientist", "nerd"]);
   })
+
+  test('should roll dice and present player with their turn activity', () => {
+    const patty = new Player("gymBro");
+    const pattysGame = new Game(patty);
+    expect(pattysGame.takeTurn()).toEqual("battleMonster" || "tripAndFall" || "findFood");
+  })
+
 })
 
 describe('Player', () => {
@@ -15,14 +22,14 @@ describe('Player', () => {
     expect(player.level).toEqual(1);
   })
 
-  test('should equip player with the correct weapon and weapon damage based on player type', () => {
+  test('should equip player with the correct weapon and weapon damage for scientist', () => {
     const player = new Player("scientist");
     player.equip();
     expect(player.weapon).toEqual("chemical burn");
     expect(player.weaponDamage).toEqual(5);
   })
 
-  test('should equip player with correct weapon and weapon damage base on player type', () => {
+  test('should equip player with correct weapon and weapon damage for gymBro', () => {
     const player = new Player("gymBro");
     player.equip();
     expect(player.weapon).toEqual("towel whip");
