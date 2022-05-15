@@ -21,4 +21,12 @@ describe('Player', () => {
     expect(player.weapon).toEqual("chemical burn");
     expect(player.weaponDamage).toEqual(5);
   })
+
+  test('should equip player with correct weapon and weapon damage base on player type', () => {
+    const player = new Player("gymBro");
+    player.equip();
+    expect(player.weapon).toEqual("towel whip");
+    expect(player.weaponDamage).toEqual(5);
+  })
 })
+
