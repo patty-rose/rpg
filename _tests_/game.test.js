@@ -1,16 +1,47 @@
 import {Game, Player} from './../src/js/Game.js';
 
 describe('Game', () => {
+
+  let patty;
+  let pattysGame;
+
+  beforeEach(() => {
+    patty = new Player("gymBro");
+    pattysGame = new Game(patty);
+  });
+
   test('should create game object', () => {
-const game = new Game(["scientist", "nerd"]);
-    expect(game.players).toEqual(["scientist", "nerd"]);
+    expect(pattysGame.player).toEqual(patty);
   })
 
   test('should roll dice and present player with their turn activity', () => {
+    pattysGame.diceRollNumber = 2;
+    console.log(pattysGame.diceRollNumber);
+    let testAnswer; 
+    if (pattysGame.diceRollNumber === 1 || 6) {
+      testAnswer = "battleMonster";
+    } else if (pattysGame.diceRollNumber === 2 || 5) {
+      testAnswer = "tripAndFall";
+    } else if (pattysGame.diceRollNumber === 3 || 4) {
+      testAnswer = "findFood";
+    }
+    expect(pattysGame.takeTurn()).toEqual("tripAndFall");
+  })
+
+  test('should have monster hp lower due to getting attacked', ()=> {
+    patty.equip();
+    pattysGame.monsterHealth = 20;
+    pattysGame.battleAttack();
+    expect(pattysGame.monsterHealth).toEqual(15)
+  })
+
+  test('should run trip and fall which will decrease player hp by 5 and increase player xp by 5', () => {
     const patty = new Player("gymBro");
     const pattysGame = new Game(patty);
-    expect(pattysGame.takeTurn()).toEqual("battleMonster" || "tripAndFall" || "findFood");
-  })
+    pattysGame.tripAndFall();
+    expect(pattysGame.player.hp).toEqual(95);
+    expect(pattysGame.player.xp).toEqual(5);
+  }) 
 
 })
 
