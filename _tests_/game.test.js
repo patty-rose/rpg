@@ -15,9 +15,10 @@ describe('Player', () => {
     expect(player.level).toEqual(1);
   })
 
-  test('should equip player with the correct weapon based on player type', () => {
+  test('should equip player with the correct weapon and weapon damage based on player type', () => {
     const player = new Player("scientist");
     player.equip();
     expect(player.weapon).toEqual("chemical burn");
+    expect(player.weaponDamage).toEqual(5);
   })
 })
