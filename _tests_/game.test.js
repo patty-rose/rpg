@@ -15,17 +15,15 @@ describe('Game', () => {
   })
 
   test('should roll dice and present player with their turn activity', () => {
-    pattysGame.diceRollNumber = 2;
-    console.log(pattysGame.diceRollNumber);
     let testAnswer; 
-    if (pattysGame.diceRollNumber === 1 || 6) {
+    if (pattysGame.diceRollNumber === 1 || pattysGame.diceRollNumber === 6) {
       testAnswer = "battleMonster";
-    } else if (pattysGame.diceRollNumber === 2 || 5) {
+    } else if (pattysGame.diceRollNumber === 2 || pattysGame.diceRollNumber === 5) {
       testAnswer = "tripAndFall";
-    } else if (pattysGame.diceRollNumber === 3 || 4) {
+    } else if (pattysGame.diceRollNumber === 3 || pattysGame.diceRollNumber === 4) {
       testAnswer = "findFood";
     }
-    expect(pattysGame.takeTurn()).toEqual("tripAndFall");
+    expect(pattysGame.takeTurn()).toEqual(testAnswer);
   })
 
   test('should have monster hp lower due to getting attacked', ()=> {

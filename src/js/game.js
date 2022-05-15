@@ -30,7 +30,7 @@ export class Game {
   }
 
   takeTurn() {
-    // this.diceRollNumber = rollDice();
+    this.diceRollNumber = rollDice();
     console.log(turnActivity(this.diceRollNumber))
     return turnActivity(this.diceRollNumber);
   }
