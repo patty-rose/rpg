@@ -33,7 +33,25 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "eslint-loader"
-      }
+      },
+      /*{
+        test:/\.(gif|png|jpe?g)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            Options: {
+              name:'[name].[ext]',
+              outoutPath: 'assets/images/'
+            }
+          }
+        ]
+      },
+      {
+        test:/\.html$/,
+        use: [
+          'html-laoder'
+        ]
+      },*/
     ]
   }
 };

@@ -2,11 +2,12 @@ function equippedWeapon(playerType) {
   const weaponMap = {
     "scientist" : ["chemical burn", 5],
     "gymBro" : ["towel whip", 5]
-  }
+  };
   return weaponMap[playerType];
 }
 
 function turnActivity(diceRollNumber) {
+  let rollActivity;
   const diceRollActivityMap = {
     1 : "battleMonster",
     2 : "tripAndFall",
@@ -14,12 +15,14 @@ function turnActivity(diceRollNumber) {
     4 : "findFood",
     5 : "tripAndFall",
     6 : "battleMonster",
-  }
-  return diceRollActivityMap[diceRollNumber];
+  };
+  rollActivity = diceRollActivityMap[diceRollNumber];
+  return rollActivity;
 }
 
 function rollDice() {
   let diceRoll = Math.floor((Math.random()*6) + 1);
+  return diceRoll;
 }
 
 export class Game {
@@ -31,7 +34,7 @@ export class Game {
 
   takeTurn() {
     this.diceRollNumber = rollDice();
-    console.log(turnActivity(this.diceRollNumber))
+    console.log(turnActivity(this.diceRollNumber));
     return turnActivity(this.diceRollNumber);
   }
 
@@ -48,6 +51,11 @@ export class Game {
   tripAndFall() {
     this.player.hp -= 5;
     this.player.xp += 5;
+  }
+
+  findFood() {
+    this.player.hp += 5;
+    this.player.xp += 10;
   }
 }
 

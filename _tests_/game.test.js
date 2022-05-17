@@ -33,6 +33,14 @@ describe('Game', () => {
     expect(pattysGame.monsterHealth).toEqual(15)
   })
 
+  test('should have monster hp lower due to getting attacked', ()=> {
+    patty.equip();
+    pattysGame.monsterHealth = 0;
+    pattysGame.battleAttack();
+    expect(pattysGame.player.xp).toEqual(15);
+    expect(pattysGame.battleAttack()).toEqual("Good job! You killed the monster!");
+  })
+
   test('should run trip and fall which will decrease player hp by 5 and increase player xp by 5', () => {
     const patty = new Player("gymBro");
     const pattysGame = new Game(patty);
